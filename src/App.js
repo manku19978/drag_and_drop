@@ -1,23 +1,23 @@
 import { useState, useRef } from "react";
 
 const App = () => {
-  const startIndex = useRef(null);
   const [list, setList] = useState([1,2,3,4,5]);
+  const startIndex = useRef(null);
 
   const handleDragStart = (i) => {
     startIndex.current = i;
   }
 
   const handleDragOver = (e) => {
-    e.preventDefault()
+    e.preventDefault();
   }
 
   const handleDrop = (i) => {
     const temp = list;
-    const startEle = temp[startIndex.current]
-    temp.splice(startIndex.current, 1)
-    temp.splice(i, 0, startEle)
-    setList(temp)
+    const startEle = temp[startIndex.current];
+    temp.splice(startIndex.current, 1);
+    temp.splice(i, 0, startEle);
+    setList([...temp]);
   }
 
   const listToRender = list.map((e, i) => {
